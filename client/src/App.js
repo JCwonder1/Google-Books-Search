@@ -6,23 +6,28 @@ import './App.css';
 
 class App extends React.Component{
   state = {
-    users: []
+    items: []
   }
 
   componentDidMount(){
-    fetch('/users')
-    .then(res => res.json())
-    .then(users => this.setState({users}));
+    fetch("https://www.googleapis.com/books/v1/volumes?q=harry+potter")
+      .then(res => res.json())
+      .then(response => this.setState({items: response.items}));
   }
 
 render(){
+  console.log(this.state.items);
   return (
     <div className="App">
-      {this.state.users.map(users => 
-        <h1>{users.user_name}</h1>
-      )}
+      {this.state.items.map(items => (
+        <div key={items.id}>
+          <h1>{items.volumeInfo.title}</h1>
+          <h5>{items.searchInfo.textSnippet}</h5>
+        </div>
+      ))}
     </div>
-  )
+  );
+  
 }
 }
 
