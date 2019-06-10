@@ -6,9 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+
 
 
 mongoose
@@ -21,6 +19,10 @@ var usersRouter = require('./routes/users');
 var booksRouter = require('./routes/books');
 
 var app = express();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.use(logger('dev'));
 app.use(express.json());
