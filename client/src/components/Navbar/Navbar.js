@@ -15,7 +15,7 @@ function Navbar(props){
             <li className="nav-item active">
               <a onClick={props.toggleStarred}className="nav-link" href="#">
                 <i className="fas fa-star" />
-                <span className="ml-1">Starred</span>
+                <span className="ml-1">Saved</span>
               </a>
             </li>
           </ul>
