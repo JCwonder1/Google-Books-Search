@@ -22,7 +22,7 @@ class App extends React.Component {
     let formatedSearch = this.state.searchTerm.split(" ").join("+");
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${formatedSearch}`)
       .then(res => res.json())
-      .then(response => this.setState({ items: response.items }))
+      .then(response => this.setState({ items: response.items, saved: false }))
       .catch(err => {
         
       });
